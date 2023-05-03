@@ -1,0 +1,51 @@
+apiVersion: machine.openshift.io/v1beta1
+kind: MachineSet
+metadata:
+  labels:
+    machine.openshift.io/cluster-api-cluster: <clustername>-<clusterID> 
+  name: <clustername>-<clusterID>-worker-cas 
+  namespace: openshift-machine-api
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      machine.openshift.io/cluster-api-cluster: <clustername>-<clusterID> 
+      machine.openshift.io/cluster-api-machineset: <clustername>-<clusterID>-worker-cas 
+  template:
+    metadata:
+      labels:
+        machine.openshift.io/cluster-api-cluster: <clustername>-<clusterID> 
+        machine.openshift.io/cluster-api-machine-role: worker 
+        machine.openshift.io/cluster-api-machine-type: worker 
+        machine.openshift.io/cluster-api-machineset: <clustername>-<clusterID>-worker-cas 
+    spec:
+      metadata:
+        labels:
+          workload.sas.com/class: cas
+      taints:
+      - effect: NoSchedule
+        key: workload.sas.com/class
+        value: cas          
+      providerSpec:
+        value:
+          apiVersion: vsphereprovider.openshift.io/v1beta1
+          credentialsSecret:
+            name: <clustername>-cloud-credentials
+          diskGiB: 120
+          kind: VSphereMachineProviderSpec
+          memoryMiB: 196608
+          network:
+            devices:
+            - networkName: "<vm_network_name>" 
+          numCPUs: 16
+          numCoresPerSocket: 1
+          snapshot: ""
+          template: <clustername>-<clusterID>-rhcos 
+          userDataSecret:
+            name: worker-user-data
+          workspace:
+            datacenter: <vcenter_datacenter_name> 
+            datastore: <vcenter_datastore_name> 
+            folder: <vcenter_vm_folder_path> 
+            resourcepool: <vsphere_resource_pool> 
+            server: <vcenter_server_ip> 
