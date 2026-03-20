@@ -1,5 +1,12 @@
-# SAS Viya on Red Hat OpenShift
+# SAS Viya Platform with Red Hat OpenShift
 
+This repo is meant as a companion to the two-part blog series with technical information about the SAS Viya Platform with Red Hat OpenShift.
+* [Part 1](https://www.redhat.com/en/blog/sas-viya-on-red-hat-openshift-part-1-reference-architecture-and-deployment-considerations) provides essential technical information about SAS Institute's SAS Viya platform, as well as a reference architecture for deploying SAS Viya on Red Hat OpenShift. 
+
+* [Part 2](https://www.redhat.com/en/blog/sas-viya-on-red-hat-openshift-part-2-security-and-storage-considerations) provides security, machine management and storage considerations. 
+
+
+## OpenShift Machine Management
 Example YAML files are provided here for the [`ClusterAutoScaler`](https://github.com/redhat-gpst/sas-viya-openshift/blob/main/clusterautoscaler.yaml), `MachineAutoScaler` and `MachineSet` definitions for node pool workload placement for SAS Viya on Red Hat OpenShift.
 
 
@@ -13,6 +20,7 @@ The following table provides the details about the `MachineAutoScaler` and `Mach
 |Stateful workloads|[`stateful-machineset.yaml`](https://github.com/redhat-gpst/sas-viya-openshift/blob/main/stateful-machineset.yaml)|[`stateful-autoscaler.yaml`](https://github.com/redhat-gpst/sas-viya-openshift/blob/main/stateful-autoscaler.yaml)|
 |Stateless workloads|[`stateless-machineset.yaml`](https://github.com/redhat-gpst/sas-viya-openshift/blob/main/stateless-machineset.yaml)|[`stateless-autoscaler.yaml`](https://github.com/redhat-gpst/sas-viya-openshift/blob/main/stateless-autoscaler.yaml)|
 
+## SAS Viya Storage Requirements
 Many SAS Viya components require highly performant storage, and SAS generally recommends a sequential I/O bandwidth of 90-120 MB per second, per physical CPU core. Normally this would be achieved by utilizing a storage system that is backed by using SSD or NVMe disks. SAS provides an automated utility script -- [rhel_iotest.sh](http://support.sas.com/kb/59/680.html), that uses UNIX/Linux dd commands to measure the I/O throughput of a file system in a Red Hat Enterprise Linux (RHEL) environment. This script can be used to compare the measured throughput of the storage in your environment to the recommendation. 
 
 For more information, refer to [How to run the rhel_iotest.sh script on an OpenShift cluster](https://github.com/redhat-gpst/sas-viya-openshift/blob/main/how-to-run-the-rhel_iotest.sh-script-on-an-openshift-cluster.md).
