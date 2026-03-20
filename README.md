@@ -9,7 +9,7 @@ This repo is a companion to the two-part blog series with technical information 
 
 Here's a reference architecture diagram showing the SAS Viya platform installed on Red Hat OpenShift:
 
-![Architecture overview](figure1-sas-viya-platform-on-openshift-reference-architecture.png)
+![Architecture overview](sas-viya-openshift-img1.png)
 
 
 ## OpenShift Machine Management
