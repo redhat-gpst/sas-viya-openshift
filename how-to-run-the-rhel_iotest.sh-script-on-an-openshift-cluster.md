@@ -55,5 +55,24 @@ oc run iotest-pod --image=registry.access.redhat.com/ubi9/ubi --privileged -it -
 # Inside the pod:
 curl -o rhel_iotest.sh <url_to_script>
 chmod +x rhel_iotest.sh
-./rhel_iotest.sh
+./rhel_iotest.sh -t <target file system>
+```
+where -t is the file system you want to test.
+
+Example output:
+
+```
+RESULTS
+-------
+INVOCATION:  rhel_iotest -t /saswork
+
+TARGET DETAILS
+  directory:    /saswork
+  df -k:        /dev/mapper/vg_saswork 4183836672 33824 4183802848   1% /saswork
+  mount point:  /dev/mapper/vg_saswork on /saswork type xfs (rw,noatime,nodiratime)
+  filesize:     251.47 gigabytes
+
+STATISTICS
+  read throughput rate:     394.30 megabytes/second per physical core
+  write throughput rate:    392.26 megabytes/second per physical core
 ```
