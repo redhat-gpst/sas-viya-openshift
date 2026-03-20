@@ -5,3 +5,15 @@ metadata:
 spec:
   resourceLimits:
     maxNodesTotal: 9
+  logVerbosity: 4
+  scaleDown:
+    cordonNodeBeforeTerminating: Enabled
+    enabled: true
+    delayAfterAdd: 10m
+    delayAfterDelete: 5m
+    delayAfterFailure: 30s
+    unneededTime: 5m
+    utilizationThreshold: "0.4"
+  scaleUp:
+    newPodScaleUpDelay: "10s"
+  expanders: ["Random"]
