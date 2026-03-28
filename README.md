@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This repo is a companion to the two-part blog series with technical information about the SAS Viya Platform with Red Hat OpenShift published on the Red Hat blog web site.
+This repo is the companion to the two-part blog series with technical information about the SAS Viya Platform with Red Hat OpenShift published on the Red Hat blog web site.
 * [Part 1](https://www.redhat.com/en/blog/sas-viya-on-red-hat-openshift-part-1-reference-architecture-and-deployment-considerations) provides essential technical information about SAS Institute's SAS Viya platform, as well as a reference architecture for deploying SAS Viya on Red Hat OpenShift. 
 
 * [Part 2](https://www.redhat.com/en/blog/sas-viya-on-red-hat-openshift-part-2-security-and-storage-considerations) provides security, machine management and storage considerations. 
